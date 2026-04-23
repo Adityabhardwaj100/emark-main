@@ -54,7 +54,8 @@ export default function WebDev() {
                     const back = card.querySelector(".flip-card-back");
                     gsap.set(front, { rotateY: 0 });
                     gsap.set(back, { rotateY: 180 });
-                    if (i > 0) gsap.set(card, { y: "130%" }); // push below viewport
+                    // Push off-screen using viewport height in px (reliable on all sizes)
+                    if (i > 0) gsap.set(card, { y: window.innerHeight });
                 });
 
                 // One shared timeline scrubbed to scroll
@@ -78,7 +79,7 @@ export default function WebDev() {
                     if (i > 0) {
                         // Slide card up into view
                         tl.to(card, {
-                            y: "0%",
+                            y: 0,
                             ease: "power2.out",
                             duration: 0.4,
                         }, t);
