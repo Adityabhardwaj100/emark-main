@@ -53,6 +53,22 @@
   color: transparent;
 }
 
+/* ─── SERVICE CARD RESPONSIVE POSITIONING ────────────────── */
+/* Must be CSS (not JS) so position is correct before GSAP runs */
+.service-card {
+  top: 65%;
+  width: 290px;
+  height: 430px;
+}
+@media (max-width: 768px) {
+  .service-card {
+    top: 72%;
+    width: clamp(230px, 72vw, 278px);
+    height: clamp(320px, 48vh, 380px);
+  }
+}
+
+
 /* ─── MARQUEE ANIMATIONS ─────────────────────────────────── */
 @keyframes marquee {
   0% { transform: translateX(0); }

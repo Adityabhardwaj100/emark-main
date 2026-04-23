@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import Image from "next/image";
 
 const cardData = [
@@ -51,18 +51,6 @@ const cardData = [
 const ServiceCard = forwardRef(({ index }, ref) => {
  const data = cardData[index];
  const videoRef = useRef(null);
- const [topPos, setTopPos] = useState("58%");
-
- useEffect(() => {
-  // Different vertical center for mobile vs desktop
-  const updateTop = () => {
-   const isMobile = window.matchMedia('(max-width: 768px)').matches;
-   setTopPos(isMobile ? "73%" : "65%");
-  };
-  updateTop();
-  window.addEventListener('resize', updateTop);
-  return () => window.removeEventListener('resize', updateTop);
- }, []);
 
  useEffect(() => {
   if (videoRef.current) {
@@ -79,11 +67,8 @@ const ServiceCard = forwardRef(({ index }, ref) => {
  ref={ref}
  style={{
   position: "absolute",
-  top: topPos,
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "clamp(240px, 75vw, 290px)",
-  height: "clamp(360px, 55vh, 430px)",
   perspective: "1200px",
   zIndex: index + 1,
   willChange: "transform",
