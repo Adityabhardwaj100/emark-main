@@ -68,8 +68,8 @@
     top: auto !important;
     left: auto !important;
     transform: none !important;
-    width: 100% !important;
-    height: 55vh !important;
+    width: 80% !important;        /* narrower = more rectangular */
+    height: 58vh !important;      /* taller relative to width */
     margin: 0 auto;
   }
   /* Disable float animation — no absolute centering on mobile */

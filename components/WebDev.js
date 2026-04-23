@@ -53,9 +53,10 @@ export default function WebDev() {
                     const flipTl = gsap.timeline({
                         scrollTrigger: {
                             trigger: card,
-                            start: "top 82%",  // flip starts as card enters view
-                            end:   "top 22%",  // flip completes as card reaches upper viewport
-                            scrub: 1.2,        // smooth 1.2s lag for cinematic feel
+                            start: "top 88%",      // flip starts as card enters viewport
+                            end:   "center 48%",   // flip completes when card center is near middle
+                            scrub: 1.2,
+                            invalidateOnRefresh: true,
                         },
                     });
 
