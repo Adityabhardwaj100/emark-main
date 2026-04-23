@@ -33,13 +33,28 @@ export default function WebDev() {
             const cardsSection = containerRef.current.querySelector(".webdev-cards-section");
 
             // ─────────────────────────────────────────────────────────────────
-            // MOBILE: Sequential reveal — each card slides up then flips
-            // Flow: Card 1 visible → flip → Card 2 slides in → flip → …
+            // MOBILE: Lusion-style deck reveal
+            // Cards stacked → flip reveals content → sweep up → next card appears
             // ─────────────────────────────────────────────────────────────────
             if (isMobile) {
-                // 4 cards × 1 screen height each + a little hold at the end
-                const totalScrollHeight = window.innerHeight * 4.5;
+                const totalScrollHeight = window.innerHeight * 4;
 
+                // ── Initial deck state ──
+                // Card 0 = top of deck, cards 1-3 hidden underneath
+                cards.forEach((card, i) => {
+                    const front = card.querySelector(".flip-card-front");
+                    const back  = card.querySelector(".flip-card-back");
+                    gsap.set(front, { rotateY: 0 });
+                    gsap.set(back,  { rotateY: 180 });
+                    // Reverse z-index: card 0 on top
+                    gsap.set(card, {
+                        zIndex: cards.length - i,
+                        opacity: i === 0 ? 1 : 0,
+                        y: 0,
+                    });
+                });
+
+                // ── Pin section ──
                 ScrollTrigger.create({
                     trigger: cardsSection,
                     start: "top top",
@@ -48,51 +63,48 @@ export default function WebDev() {
                     pinSpacing: true,
                 });
 
-                // Initial state: cards start flipped to front; cards 1-3 off-screen below
-                cards.forEach((card, i) => {
-                    const front = card.querySelector(".flip-card-front");
-                    const back = card.querySelector(".flip-card-back");
-                    gsap.set(front, { rotateY: 0 });
-                    gsap.set(back, { rotateY: 180 });
-                    // Push off-screen using viewport height in px (reliable on all sizes)
-                    if (i > 0) gsap.set(card, { y: window.innerHeight });
-                });
-
-                // One shared timeline scrubbed to scroll
+                // ── One shared scrubbed timeline ──
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: cardsSection,
                         start: "top top",
                         end: `+=${totalScrollHeight}`,
-                        scrub: 1.5,
+                        scrub: 1,
                     },
                 });
 
-                // Each card occupies 1 unit of timeline:
-                //   - if not first: 0–0.4 slide up from below
-                //   - 0.4–1.0 flip to reveal content
+                // Each card gets 1 unit of timeline:
+                //  0.00–0.45 → flip card (front → back reveals content)
+                //  0.55–1.00 → card sweeps off-screen upward    +    next card fades in
                 cards.forEach((card, i) => {
                     const front = card.querySelector(".flip-card-front");
-                    const back = card.querySelector(".flip-card-back");
-                    const t = i; // this card's slot starts at integer i
+                    const back  = card.querySelector(".flip-card-back");
+                    const t = i;
 
-                    if (i > 0) {
-                        // Slide card up into view
-                        tl.to(card, {
-                            y: 0,
+                    // STEP 1 — flip
+                    tl.to(front, { rotateY: -180, ease: "power2.inOut", duration: 0.45 }, t);
+                    tl.to(back,  { rotateY:    0, ease: "power2.inOut", duration: 0.45 }, t);
+
+                    // STEP 2 — sweep up and out (Lusion-style exit)
+                    tl.to(card, {
+                        y: -window.innerHeight * 1.15,
+                        ease: "power3.in",
+                        duration: 0.45,
+                    }, t + 0.55);
+
+                    // STEP 3 — reveal next card simultaneously
+                    if (i < cards.length - 1) {
+                        tl.to(cards[i + 1], {
+                            opacity: 1,
                             ease: "power2.out",
-                            duration: 0.4,
-                        }, t);
+                            duration: 0.35,
+                        }, t + 0.55);
                     }
-
-                    // Flip to reveal service content (back face)
-                    const flipAt = i === 0 ? t + 0.15 : t + 0.4;
-                    tl.to(front, { rotateY: -180, ease: "power3.inOut", duration: 0.6 }, flipAt);
-                    tl.to(back, { rotateY: 0, ease: "power3.inOut", duration: 0.6 }, flipAt);
                 });
 
                 return; // ← skip desktop logic
             }
+
 
             // ─────────────────────────────────────────────────────────────────
             // DESKTOP: Horizontal fan out then flip

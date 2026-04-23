@@ -62,9 +62,9 @@
 }
 @media (max-width: 768px) {
   .service-card {
-    top: 72%;
-    width: clamp(230px, 72vw, 278px);
-    height: clamp(320px, 48vh, 380px);
+    top: 65%;
+    width: 86vw;
+    height: 55vh;
   }
 }
 
