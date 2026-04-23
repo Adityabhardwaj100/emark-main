@@ -43,24 +43,27 @@ export default function WebDev() {
                     const front = card.querySelector(".flip-card-front");
                     const back  = card.querySelector(".flip-card-back");
 
-                    // Start: FRONT face visible (video/visual side)
+                    // Start: FRONT face visible (video side)
                     gsap.set(front, { rotateY: 0 });
                     gsap.set(back,  { rotateY: 180 });
 
-                    // Flip to BACK (service text) when card scrolls into view
-                    ScrollTrigger.create({
-                        trigger: card,
-                        start: "top 75%",
-                        onEnter: () => {
-                            gsap.to(front, { rotateY: -180, duration: 1.4, ease: "expo.inOut" });
-                            gsap.to(back,  { rotateY: 0,    duration: 1.4, ease: "expo.inOut" });
-                        },
-                        onLeaveBack: () => {
-                            gsap.to(front, { rotateY: 0,   duration: 1.1, ease: "expo.inOut" });
-                            gsap.to(back,  { rotateY: 180, duration: 1.1, ease: "expo.inOut" });
+                    // Scrub = flip is tied directly to scroll position
+                    // → scroll down: flips to back (text)
+                    // → scroll up:   auto-reverses back to front (video)
+                    const flipTl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 82%",  // flip starts as card enters view
+                            end:   "top 22%",  // flip completes as card reaches upper viewport
+                            scrub: 1.2,        // smooth 1.2s lag for cinematic feel
                         },
                     });
+
+                    flipTl
+                        .to(front, { rotateY: -180, ease: "power2.inOut", duration: 1 })
+                        .to(back,  { rotateY: 0,    ease: "power2.inOut", duration: 1 }, "<");
                 });
+
 
                 return;
             }
