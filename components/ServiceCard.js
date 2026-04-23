@@ -66,15 +66,15 @@ const ServiceCard = forwardRef(({ index }, ref) => {
  id={`service-card-${index + 1}`}
  ref={ref}
  style={{
- position: "absolute",
- top: "61%",
- left: "50%",
- transform: "translate(-50%, -50%)",
- width: "290px",
- height: "430px",
- perspective: "1200px",
- zIndex: index + 1,
- willChange: "transform",
+  position: "absolute",
+  top: "clamp(62%, 66%, 70%)",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "clamp(240px, 75vw, 290px)",
+  height: "clamp(360px, 55vh, 430px)",
+  perspective: "1200px",
+  zIndex: index + 1,
+  willChange: "transform",
  }}
  >
  {/* Floating wrapper — animation applied via global CSS below */}
