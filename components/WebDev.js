@@ -172,7 +172,7 @@ export default function WebDev() {
                     <div className="flex flex-col items-center text-center">
                         <div className="section-eyebrow">WHAT WE DO</div>
                         <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold font-syne text-white mb-2 md:mb-4 leading-tight max-w-3xl uppercase tracking-tight">
-                            WE DON&apos;T JUST CONSULT. WE BUILD.
+                            WE DON&apos;T JUST CONSULT WE BUILD
                         </h2>
                     </div>
                 </motion.div>

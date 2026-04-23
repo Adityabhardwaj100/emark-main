@@ -44,7 +44,7 @@ export default function TickerTape() {
    {/* Scrolling Text Track */}
    <div 
     ref={textRef}
-    className="relative z-10 flex items-center whitespace-nowrap pl-[10vw] pr-[50vw]"
+    className="relative z-10 flex items-center whitespace-nowrap pl-[10vw] pr-[15vw]"
    >
 
     {/* Segment 1 */}
@@ -103,7 +103,14 @@ export default function TickerTape() {
      YOUR GROWTH ENGINE
     </span>
 
-    <div className="w-6 h-6 md:w-10 md:h-10 rounded-full bg-lime shrink-0" />
+    {/* Final Segment */}
+    <div className="w-6 h-6 md:w-10 md:h-10 rounded-full bg-lime shrink-0 mr-10 md:mr-20" />
+
+    <span className="text-[11vw] md:text-[13vw] font-black font-syne uppercase tracking-tighter leading-none text-white mr-10 md:mr-20">
+     EMARK
+    </span>
+
+    <div className="w-4 h-4 md:w-8 md:h-8 rounded-full bg-lime shrink-0" />
 
    </div>
   </section>
