@@ -119,18 +119,23 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        {/* ── Mobile: Simple vertical list — NO pinning ── */}
-        <div className="flex md:hidden flex-col gap-5 w-full">
+        {/* ── Mobile: CSS-only overlapping card stack — NO pinning ── */}
+        <div className="flex md:hidden flex-col w-full" style={{ paddingBottom: "2rem" }}>
           {STEPS.map((step, idx) => (
             <div
               key={step.num}
-              className="w-full bg-[#080808] border border-white/15 rounded-2xl p-5 flex flex-col"
+              className="w-full bg-[#080808] border border-white/15 rounded-2xl p-5 flex flex-col relative"
+              style={{
+                zIndex: idx + 10,
+                marginTop: idx === 0 ? 0 : "-56px",
+                boxShadow: "0 -12px 40px rgba(0,0,0,0.9)",
+              }}
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="text-lg font-syne font-black text-gray-500">
                   {step.num} <span className="text-gray-700">/ 04</span>
                 </div>
-                <div className="h-[1px] w-8 bg-gray-700 flex-1" />
+                <div className="h-[1px] flex-1 bg-gray-700" />
               </div>
               <h3 className="text-2xl font-syne font-bold text-white mb-3 uppercase tracking-tight">{step.title}</h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-4">{step.description}</p>
