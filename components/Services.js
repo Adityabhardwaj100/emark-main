@@ -28,7 +28,7 @@ export default function Services() {
  className="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-14 gap-5"
  >
  <motion.div variants={itemVars} className="max-w-2xl">
- <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold font-syne text-white mb-4">AI Solutions</h2>
+ <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold font-syne text-white mb-4 uppercase tracking-tight">AI SOLUTIONS</h2>
  <p className="text-gray-400 text-base md:text-lg">Harness the power of machine intelligence to transform your bottlenecks into competitive advantages.</p>
  </motion.div>
  <motion.div variants={itemVars}>

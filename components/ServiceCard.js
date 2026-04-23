@@ -67,7 +67,7 @@ const ServiceCard = forwardRef(({ index }, ref) => {
  ref={ref}
  style={{
   position: "absolute",
-  top: "clamp(62%, 66%, 70%)",
+  top: "58%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "clamp(240px, 75vw, 290px)",

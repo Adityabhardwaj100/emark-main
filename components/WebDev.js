@@ -170,11 +170,10 @@ export default function WebDev() {
                     style={{ position: "absolute", top: "10vh", left: 0, right: 0, padding: "0 20px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", zIndex: 5 }}
                 >
                     <div className="flex flex-col items-center text-center">
-                        <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold font-syne text-white mb-2 md:mb-4 leading-tight max-w-3xl">
-                            We Don&apos;t Just Consult{" "}
-                            <span className="text-white italic">We Build</span>
+                        <div className="section-eyebrow">WHAT WE DO</div>
+                        <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold font-syne text-white mb-2 md:mb-4 leading-tight max-w-3xl uppercase tracking-tight">
+                            WE DON&apos;T JUST CONSULT. WE BUILD.
                         </h2>
-
                     </div>
                 </motion.div>
 

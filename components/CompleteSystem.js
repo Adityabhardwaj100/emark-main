@@ -57,9 +57,8 @@ export default function CompleteSystem() {
         <div className="w-[100vw] lg:w-[45vw] shrink-0 px-6 md:px-12 lg:px-20 flex flex-col justify-center items-center text-center">
           <div className="max-w-3xl flex flex-col items-center">
             <div className="section-eyebrow">THE COMPLETE SYSTEM</div>
-            <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold font-syne text-white tracking-tighter leading-[0.9] uppercase">
-              Unified <br />
-              <span className="italic text-white">Growth Engine</span>
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold font-syne text-white tracking-tight leading-[0.9] uppercase">
+              UNIFIED GROWTH ENGINE
             </h2>
           </div>
           <p className="text-base md:text-lg text-gray-500 max-w-sm leading-relaxed mt-6 mx-auto">

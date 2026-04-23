@@ -1,13 +1,13 @@
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Urbanist, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 
-const spaceGrotesk = Space_Grotesk({
+const urbanist = Urbanist({
  subsets: ["latin"],
  variable: "--font-syne",
- weight: ["300", "400", "500", "600", "700"],
+ weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 const inter = Inter({
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
  <head>
 
  </head>
- <body className={`${spaceGrotesk.variable} ${inter.variable} font-dm bg-dark text-gray-400 antialiased relative selection:bg-lime selection:text-dark overflow-x-hidden w-full`}>
+ <body className={`${urbanist.variable} ${inter.variable} font-dm bg-dark text-gray-400 antialiased relative selection:bg-lime selection:text-dark overflow-x-hidden w-full`}>
  <Navbar />
  {children}
  <Footer />

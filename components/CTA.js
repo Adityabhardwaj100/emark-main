@@ -14,9 +14,8 @@ export default function CTA() {
  <div className="flex flex-col items-center text-center justify-center gap-5 mb-12">
  <div className="max-w-3xl flex flex-col items-center">
  <div className="section-eyebrow">START YOUR PROJECT</div>
- <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-syne text-white tracking-tighter leading-[0.9] uppercase mt-2">
- Build Your <br />
- <span className="text-white italic">Engine</span>
+ <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-syne text-white tracking-tight leading-[0.9] uppercase mt-2">
+  BUILD YOUR ENGINE
  </h2>
  </div>
  <p className="text-lg text-gray-500 max-w-lg leading-relaxed mx-auto text-center">
