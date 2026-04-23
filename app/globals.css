@@ -60,11 +60,22 @@
   width: 290px;
   height: 430px;
 }
+
+/* Mobile: relative so cards stack in normal flex flow */
 @media (max-width: 768px) {
   .service-card {
-    top: 65%;
-    width: 86vw;
-    height: 55vh;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 55vh !important;
+    margin: 0 auto;
+  }
+  /* Disable float animation — no absolute centering on mobile */
+  .card-float-wrapper {
+    animation: none !important;
+    transform: translate(-50%, -50%) !important;
   }
 }
 

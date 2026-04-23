@@ -10,14 +10,16 @@ import ServiceCard from "./ServiceCard";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function WebDev() {
-    const containerRef = useRef(null);
-    const cardRefs = useRef([]);
+    const containerRef   = useRef(null);
+    const cardRefs       = useRef([]); // desktop
+    const mobileCardRefs = useRef([]); // mobile
+
     const lenisRef = useRef(null);
 
-    // Lenis smooth scroll — desktop only
+    // Lenis — desktop only
     useEffect(() => {
-        const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-        if (isTouchDevice) return;
+        const isTouch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+        if (isTouch) return;
         if (lenisRef.current) return;
         const lenis = new Lenis();
         lenisRef.current = lenis;
@@ -28,90 +30,49 @@ export default function WebDev() {
 
     useGSAP(
         () => {
-            const cards = cardRefs.current;
-            const isMobile = window.matchMedia('(max-width: 768px)').matches;
-            const cardsSection = containerRef.current.querySelector(".webdev-cards-section");
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
             // ─────────────────────────────────────────────────────────────────
-            // MOBILE: Lusion-style deck reveal
-            // Cards stacked → flip reveals content → sweep up → next card appears
+            // MOBILE: Vertical column — cards show back, flip to front on scroll
             // ─────────────────────────────────────────────────────────────────
             if (isMobile) {
-                const totalScrollHeight = window.innerHeight * 4;
+                const cards = mobileCardRefs.current;
 
-                // ── Initial deck state ──
-                // Card 0 = top of deck, cards 1-3 hidden underneath
                 cards.forEach((card, i) => {
+                    if (!card) return;
                     const front = card.querySelector(".flip-card-front");
                     const back  = card.querySelector(".flip-card-back");
-                    gsap.set(front, { rotateY: 0 });
-                    gsap.set(back,  { rotateY: 180 });
-                    // Reverse z-index: card 0 on top
-                    gsap.set(card, {
-                        zIndex: cards.length - i,
-                        opacity: i === 0 ? 1 : 0,
-                        y: 0,
+
+                    // Start: back face visible (shows STRATEGY / CREATIVE / TECH / GROWTH)
+                    gsap.set(front, { rotateY: -180 });
+                    gsap.set(back,  { rotateY: 0 });
+
+                    // Flip to front when card scrolls into view
+                    ScrollTrigger.create({
+                        trigger: card,
+                        start: "top 75%",
+                        onEnter: () => {
+                            gsap.to(front, { rotateY: 0,   duration: 0.9, ease: "power3.inOut", delay: i * 0.05 });
+                            gsap.to(back,  { rotateY: 180, duration: 0.9, ease: "power3.inOut", delay: i * 0.05 });
+                        },
+                        onLeaveBack: () => {
+                            gsap.to(front, { rotateY: -180, duration: 0.7, ease: "power2.inOut" });
+                            gsap.to(back,  { rotateY: 0,   duration: 0.7, ease: "power2.inOut" });
+                        },
                     });
                 });
 
-                // ── Pin section ──
-                ScrollTrigger.create({
-                    trigger: cardsSection,
-                    start: "top top",
-                    end: `+=${totalScrollHeight}`,
-                    pin: true,
-                    pinSpacing: true,
-                });
-
-                // ── One shared scrubbed timeline ──
-                const tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: cardsSection,
-                        start: "top top",
-                        end: `+=${totalScrollHeight}`,
-                        scrub: 1,
-                    },
-                });
-
-                // Each card gets 1 unit of timeline:
-                //  0.00–0.45 → flip card (front → back reveals content)
-                //  0.55–1.00 → card sweeps off-screen upward    +    next card fades in
-                cards.forEach((card, i) => {
-                    const front = card.querySelector(".flip-card-front");
-                    const back  = card.querySelector(".flip-card-back");
-                    const t = i;
-
-                    // STEP 1 — flip
-                    tl.to(front, { rotateY: -180, ease: "power2.inOut", duration: 0.45 }, t);
-                    tl.to(back,  { rotateY:    0, ease: "power2.inOut", duration: 0.45 }, t);
-
-                    // STEP 2 — sweep up and out (Lusion-style exit)
-                    tl.to(card, {
-                        y: -window.innerHeight * 1.15,
-                        ease: "power3.in",
-                        duration: 0.45,
-                    }, t + 0.55);
-
-                    // STEP 3 — reveal next card simultaneously
-                    if (i < cards.length - 1) {
-                        tl.to(cards[i + 1], {
-                            opacity: 1,
-                            ease: "power2.out",
-                            duration: 0.35,
-                        }, t + 0.55);
-                    }
-                });
-
-                return; // ← skip desktop logic
+                return;
             }
-
 
             // ─────────────────────────────────────────────────────────────────
             // DESKTOP: Horizontal fan out then flip
             // ─────────────────────────────────────────────────────────────────
+            const cards = cardRefs.current;
+            const cardsSection = containerRef.current.querySelector(".webdev-cards-section");
             const totalScrollHeight = window.innerHeight * 3;
-            const positions = [14, 38, 62, 86];
-            const rotations = [-18, -7, 7, 18];
+            const positions  = [14, 38, 62, 86];
+            const rotations  = [-18, -7, 7, 18];
 
             ScrollTrigger.create({
                 trigger: cardsSection,
@@ -123,9 +84,9 @@ export default function WebDev() {
 
             cards.forEach((card, i) => {
                 const frontEl = card.querySelector(".flip-card-front");
-                const backEl = card.querySelector(".flip-card-back");
-                gsap.set(backEl, { rotateY: 180 });
-                gsap.set(frontEl, { rotateY: 0 });
+                const backEl  = card.querySelector(".flip-card-back");
+                gsap.set(backEl,  { rotateY: 180 });
+                gsap.set(frontEl, { rotateY: 0   });
 
                 const tl = gsap.timeline({
                     scrollTrigger: {
@@ -147,8 +108,8 @@ export default function WebDev() {
                 // Phase 2: flip + straighten
                 const flipStart = 1 + i * 0.25;
                 tl.to(frontEl, { rotateY: -180, ease: "power3.inOut", duration: 1.2 }, flipStart);
-                tl.to(backEl, { rotateY: 0, ease: "power3.inOut", duration: 1.2 }, flipStart);
-                tl.to(card, { rotation: 0, ease: "power3.inOut", duration: 1.2 }, flipStart);
+                tl.to(backEl,  { rotateY: 0,    ease: "power3.inOut", duration: 1.2 }, flipStart);
+                tl.to(card,    { rotation: 0,   ease: "power3.inOut", duration: 1.2 }, flipStart);
             });
         },
         { scope: containerRef }
@@ -156,8 +117,49 @@ export default function WebDev() {
 
     return (
         <div ref={containerRef}>
+
+            {/* ══════════════════════════════════════════════════════
+                MOBILE SECTION — vertical column, scroll-flip per card
+                ══════════════════════════════════════════════════════ */}
+            <section className="block md:hidden bg-black relative overflow-hidden">
+
+                {/* top glow edge */}
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent z-10" />
+
+                {/* Heading */}
+                <motion.div
+                    initial={{ y: 40, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="text-center pt-24 pb-10 px-5"
+                >
+                    <div className="section-eyebrow justify-center">WHAT WE DO</div>
+                    <h2 className="text-2xl font-bold font-syne text-white uppercase tracking-tight leading-tight mt-1">
+                        WE DON&apos;T JUST CONSULT. WE BUILD.
+                    </h2>
+                    <p className="text-xs text-gray-500 mt-3 uppercase tracking-widest">
+                        Scroll to reveal each service
+                    </p>
+                </motion.div>
+
+                {/* Cards — vertical column, each shows back face initially */}
+                <div className="flex flex-col gap-6 px-4 pb-24">
+                    {[0, 1, 2, 3].map((i) => (
+                        <ServiceCard
+                            key={`mob-${i}`}
+                            index={i}
+                            ref={(el) => (mobileCardRefs.current[i] = el)}
+                        />
+                    ))}
+                </div>
+            </section>
+
+            {/* ══════════════════════════════════════════════════════
+                DESKTOP SECTION — pinned fan + flip
+                ══════════════════════════════════════════════════════ */}
             <section
-                className="webdev-cards-section"
+                className="webdev-cards-section hidden md:block"
                 style={{
                     position: "relative",
                     width: "100vw",
@@ -168,10 +170,7 @@ export default function WebDev() {
                     borderTop: "1px solid rgba(255,255,255,0.02)",
                 }}
             >
-                {/* Top-edge glow */}
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent z-20" />
-
-                {/* Ambient glow */}
                 <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "800px", height: "400px", background: "radial-gradient(ellipse, rgba(200,255,0,0.03) 0%, transparent 70%)", pointerEvents: "none" }} />
 
                 {/* Heading */}
@@ -184,35 +183,40 @@ export default function WebDev() {
                 >
                     <div className="flex flex-col items-center text-center">
                         <div className="section-eyebrow">WHAT WE DO</div>
-                        <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold font-syne text-white mb-2 md:mb-4 leading-tight max-w-3xl uppercase tracking-tight">
-                            WE DON&apos;T JUST CONSULT WE BUILD
+                        <h2 className="text-5xl lg:text-6xl font-bold font-syne text-white mb-2 md:mb-4 leading-tight max-w-3xl uppercase tracking-tight">
+                            WE DON&apos;T JUST CONSULT. WE BUILD.
                         </h2>
                     </div>
                 </motion.div>
 
-                {/* Cards */}
+                {/* Desktop Cards */}
                 {[0, 1, 2, 3].map((i) => (
                     <ServiceCard
-                        key={i}
+                        key={`desk-${i}`}
                         index={i}
                         ref={(el) => (cardRefs.current[i] = el)}
                     />
                 ))}
 
+                {/* Scroll hint */}
+                <div style={{ position: "absolute", bottom: "24px", left: "50%", transform: "translateX(-50%)", fontSize: "10px", letterSpacing: "0.4em", color: "rgba(255,255,255,0.15)", textTransform: "uppercase", fontWeight: "600", zIndex: 10, whiteSpace: "nowrap" }}>
+                    ↓ Scroll to fan &amp; flip
+                </div>
 
-                {/* Float animation */}
+                {/* Float animation — desktop only */}
                 <style>{`
-     @keyframes floatCard {
-      0%   { transform: translate(-50%, -50%); }
-      50%  { transform: translate(-50%, -57%); }
-      100% { transform: translate(-50%, -50%); }
-     }
-     #service-card-1 .card-float-wrapper { animation: floatCard 3s ease-in-out infinite; animation-delay: 0s; }
-     #service-card-2 .card-float-wrapper { animation: floatCard 3s ease-in-out infinite; animation-delay: 0.2s; }
-     #service-card-3 .card-float-wrapper { animation: floatCard 3s ease-in-out infinite; animation-delay: 0.4s; }
-     #service-card-4 .card-float-wrapper { animation: floatCard 3s ease-in-out infinite; animation-delay: 0.6s; }
-    `}</style>
+                    @keyframes floatCard {
+                        0%   { transform: translate(-50%, -50%); }
+                        50%  { transform: translate(-50%, -57%); }
+                        100% { transform: translate(-50%, -50%); }
+                    }
+                    #service-card-1 .card-float-wrapper { animation: floatCard 3s ease-in-out infinite; animation-delay: 0s; }
+                    #service-card-2 .card-float-wrapper { animation: floatCard 3s ease-in-out infinite; animation-delay: 0.2s; }
+                    #service-card-3 .card-float-wrapper { animation: floatCard 3s ease-in-out infinite; animation-delay: 0.4s; }
+                    #service-card-4 .card-float-wrapper { animation: floatCard 3s ease-in-out infinite; animation-delay: 0.6s; }
+                `}</style>
             </section>
+
         </div>
     );
 }
