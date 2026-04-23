@@ -57,7 +57,7 @@ const ServiceCard = forwardRef(({ index }, ref) => {
   // Different vertical center for mobile vs desktop
   const updateTop = () => {
    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-   setTopPos(isMobile ? "73%" : "58%");
+   setTopPos(isMobile ? "73%" : "65%");
   };
   updateTop();
   window.addEventListener('resize', updateTop);
