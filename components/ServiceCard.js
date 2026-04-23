@@ -191,16 +191,16 @@ const ServiceCard = forwardRef(({ index }, ref) => {
  <span
  style={{
  fontFamily: "var(--font-syne), sans-serif",
- fontSize: "11px",
+ fontSize: "18px",
  fontWeight: "800",
- letterSpacing: "0.35em",
+ letterSpacing: "0.2em",
  color: "#111",
  textTransform: "uppercase",
  }}
  >
  {data.label}
  </span>
- <span style={{ fontSize: "20px" }}>{data.emoji}</span>
+ <span style={{ fontSize: "22px" }}>{data.emoji}</span>
  </div>
 
  {/* Items list */}
