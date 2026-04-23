@@ -43,21 +43,21 @@ export default function WebDev() {
                     const front = card.querySelector(".flip-card-front");
                     const back  = card.querySelector(".flip-card-back");
 
-                    // Start: back face visible (shows STRATEGY / CREATIVE / TECH / GROWTH)
-                    gsap.set(front, { rotateY: -180 });
-                    gsap.set(back,  { rotateY: 0 });
+                    // Start: FRONT face visible (video/visual side)
+                    gsap.set(front, { rotateY: 0 });
+                    gsap.set(back,  { rotateY: 180 });
 
-                    // Flip to front when card scrolls into view
+                    // Flip to BACK (service text) when card scrolls into view
                     ScrollTrigger.create({
                         trigger: card,
                         start: "top 75%",
                         onEnter: () => {
-                            gsap.to(front, { rotateY: 0,   duration: 0.9, ease: "power3.inOut", delay: i * 0.05 });
-                            gsap.to(back,  { rotateY: 180, duration: 0.9, ease: "power3.inOut", delay: i * 0.05 });
+                            gsap.to(front, { rotateY: -180, duration: 1.4, ease: "expo.inOut" });
+                            gsap.to(back,  { rotateY: 0,    duration: 1.4, ease: "expo.inOut" });
                         },
                         onLeaveBack: () => {
-                            gsap.to(front, { rotateY: -180, duration: 0.7, ease: "power2.inOut" });
-                            gsap.to(back,  { rotateY: 0,   duration: 0.7, ease: "power2.inOut" });
+                            gsap.to(front, { rotateY: 0,   duration: 1.1, ease: "expo.inOut" });
+                            gsap.to(back,  { rotateY: 180, duration: 1.1, ease: "expo.inOut" });
                         },
                     });
                 });
@@ -143,8 +143,8 @@ export default function WebDev() {
                     </p>
                 </motion.div>
 
-                {/* Cards — vertical column, each shows back face initially */}
-                <div className="flex flex-col gap-6 px-4 pb-24">
+                {/* Cards — vertical column, each shows front initially, flips to service text on scroll */}
+                <div className="flex flex-col gap-6 px-4 pb-32">
                     {[0, 1, 2, 3].map((i) => (
                         <ServiceCard
                             key={`mob-${i}`}
