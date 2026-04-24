@@ -39,6 +39,7 @@ const PROJECTS = [
     display: "grytt.in",
     tech: "Shopify",
     index: "02",
+    image: "/projects/grytt.jpg",
     tagline: "Premium Shopify Storefront",
     description:
       "A premium Shopify storefront crafted for high-conversion sales. Built with a mobile-first design philosophy and optimised for maximum product discovery and checkout conversion.",
