@@ -269,8 +269,8 @@ function ProjectModal({ project, onClose }) {
           <X size={16} className="text-white" />
         </button>
 
-        {/* Screenshot */}
-        <div className="w-full relative overflow-hidden" style={{ aspectRatio: "16/10" }}>
+        {/* Screenshot — compact height so content starts near top */}
+        <div className="w-full relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
           <img
             src={getThumb(project.url)}
             alt={project.title}
@@ -280,8 +280,8 @@ function ProjectModal({ project, onClose }) {
           <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent" />
         </div>
 
-        {/* Content */}
-        <div className="px-8 pb-16 -mt-6 relative">
+        {/* Content — starts right after screenshot */}
+        <div className="px-6 md:px-8 pt-6 pb-16 relative">
           {/* Index + tech */}
           <div className="flex items-center gap-4 mb-6">
             <span className="text-[11px] font-mono text-white/20 uppercase tracking-widest">{project.index} / 11</span>
@@ -451,58 +451,74 @@ export default function ProjectsPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   onClick={() => setSelected(project)}
-                  className="group relative grid grid-cols-1 md:grid-cols-12 gap-4 py-6 md:py-8 border-b border-white/[0.05] hover:border-white/20 cursor-pointer transition-all duration-300 items-center"
+                  className="group relative cursor-pointer transition-all duration-300"
                 >
-                  {/* Hover bg */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                    style={{ background: "rgba(255,255,255,0.02)" }} />
-
-                  {/* Hover lime glow */}
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] h-[150px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{ background: "radial-gradient(ellipse, rgba(200,241,53,0.06) 0%, transparent 70%)" }} />
-
-                  {/* Index */}
-                  <div className="md:col-span-1 text-[13px] font-mono text-white/20 group-hover:text-white/40 transition-colors">
-                    {project.index}
-                  </div>
-
-                  {/* Title + preview */}
-                  <div className="md:col-span-4 flex items-center gap-5">
-                    {/* Thumbnail */}
-                    <div className="w-16 h-10 md:w-20 md:h-12 rounded-lg overflow-hidden shrink-0 border border-white/[0.07] group-hover:border-white/20 transition-colors">
+                  {/* ── MOBILE layout ── */}
+                  <div className="md:hidden flex items-center gap-4 py-5 border-b border-white/[0.06] hover:border-white/20 transition-colors">
+                    <div className="w-14 h-9 rounded-lg overflow-hidden shrink-0 border border-white/[0.07]">
                       <img
                         src={getThumb(project.url)}
                         alt={project.title}
-                        className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-cover object-top"
                         onError={(e) => { e.target.parentElement.style.background = "#111"; e.target.style.display = "none"; }}
                       />
                     </div>
-                    <div>
-                      <div className="font-syne font-bold text-white text-lg md:text-xl tracking-tight group-hover:translate-x-1 transition-transform duration-300">
-                        {project.title}
-                      </div>
-                      <div className="text-[11px] text-gray-600 font-mono mt-0.5">{project.display}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-syne font-bold text-white text-base tracking-tight truncate">{project.title}</div>
+                      <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full font-bold mt-1 inline-block"
+                        style={{ background: tc.bg, color: tc.color }}>
+                        {project.tech}
+                      </span>
                     </div>
+                    <ArrowUpRight size={16} className="text-white/30 group-hover:text-white shrink-0 transition-colors" />
                   </div>
 
-                  {/* Tech */}
-                  <div className="md:col-span-2">
-                    <span className="text-[10px] font-mono uppercase tracking-widest px-3 py-1.5 rounded-full font-bold"
-                      style={{ background: tc.bg, color: tc.color }}>
-                      <span className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle" style={{ background: tc.color }} />
-                      {project.tech}
-                    </span>
-                  </div>
+                  {/* ── DESKTOP layout ── */}
+                  <div className="hidden md:grid grid-cols-12 gap-4 py-8 border-b border-white/[0.05] group-hover:border-white/20 items-center">
+                    {/* Hover bg */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+                      style={{ background: "rgba(255,255,255,0.02)" }} />
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] h-[150px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{ background: "radial-gradient(ellipse, rgba(200,241,53,0.06) 0%, transparent 70%)" }} />
 
-                  {/* Tagline */}
-                  <div className="md:col-span-3 text-gray-500 text-[13px] leading-relaxed group-hover:text-gray-400 transition-colors">
-                    {project.tagline}
-                  </div>
-
-                  {/* Arrow */}
-                  <div className="md:col-span-2 flex justify-end">
-                    <div className="w-10 h-10 rounded-full border border-white/10 group-hover:border-white/40 group-hover:bg-white/5 flex items-center justify-center transition-all duration-300">
-                      <ArrowUpRight size={15} className="text-white/30 group-hover:text-white transition-colors" />
+                    {/* Index */}
+                    <div className="col-span-1 text-[13px] font-mono text-white/20 group-hover:text-white/40 transition-colors">
+                      {project.index}
+                    </div>
+                    {/* Title + thumbnail */}
+                    <div className="col-span-4 flex items-center gap-5 relative z-10">
+                      <div className="w-20 h-12 rounded-lg overflow-hidden shrink-0 border border-white/[0.07] group-hover:border-white/20 transition-colors">
+                        <img
+                          src={getThumb(project.url)}
+                          alt={project.title}
+                          className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                          onError={(e) => { e.target.parentElement.style.background = "#111"; e.target.style.display = "none"; }}
+                        />
+                      </div>
+                      <div>
+                        <div className="font-syne font-bold text-white text-xl tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                          {project.title}
+                        </div>
+                        <div className="text-[11px] text-gray-600 font-mono mt-0.5">{project.display}</div>
+                      </div>
+                    </div>
+                    {/* Tech */}
+                    <div className="col-span-2 relative z-10">
+                      <span className="text-[10px] font-mono uppercase tracking-widest px-3 py-1.5 rounded-full font-bold"
+                        style={{ background: tc.bg, color: tc.color }}>
+                        <span className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle" style={{ background: tc.color }} />
+                        {project.tech}
+                      </span>
+                    </div>
+                    {/* Tagline */}
+                    <div className="col-span-3 text-gray-500 text-[13px] leading-relaxed group-hover:text-gray-400 transition-colors relative z-10">
+                      {project.tagline}
+                    </div>
+                    {/* Arrow */}
+                    <div className="col-span-2 flex justify-end relative z-10">
+                      <div className="w-10 h-10 rounded-full border border-white/10 group-hover:border-white/40 group-hover:bg-white/5 flex items-center justify-center transition-all duration-300">
+                        <ArrowUpRight size={15} className="text-white/30 group-hover:text-white transition-colors" />
+                      </div>
                     </div>
                   </div>
                 </motion.div>
