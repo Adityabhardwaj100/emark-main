@@ -10,23 +10,23 @@ gsap.registerPlugin(ScrollTrigger);
 // Ticker items — shown on both mobile (marquee) and desktop (scroll)
 const ITEMS = [
   { type: "text", content: "WE BUILD AI" },
-  { type: "icon",  icon: ArrowRight },
+  { type: "icon", icon: ArrowRight },
   { type: "text", content: "THAT WORKS", italic: true },
-  { type: "dot",  lime: true },
+  { type: "dot", lime: true },
   { type: "text", content: "NOT JUST WEBSITES" },
   { type: "line" },
   { type: "text", content: "FULL STACK GROWTH" },
-  { type: "icon",  icon: Bot },
-  { type: "text", content: "24/7 AUTOPILOT", italic: true },
-  { type: "dot",  lime: true },
+  { type: "icon", icon: Bot },
+
+  { type: "dot", lime: true },
   { type: "text", content: "SCALE WITHOUT LIMITS" },
-  { type: "icon",  icon: Globe },
+  { type: "icon", icon: Globe },
   { type: "text", content: "THIS IS EMARK" },
-  { type: "icon",  icon: TrendingUp, lime: true },
+  { type: "icon", icon: TrendingUp, lime: true },
   { type: "text", content: "YOUR GROWTH ENGINE", italic: true },
-  { type: "dot",  lime: true },
+  { type: "dot", lime: true },
   { type: "text", content: "EMARK" },
-  { type: "dot",  lime: true, small: true },
+  { type: "dot", lime: true, small: true },
 ];
 
 function renderItem(item, i, sizeClass = "text-[13vw]") {
@@ -49,14 +49,14 @@ function renderItem(item, i, sizeClass = "text-[13vw]") {
 
 export default function TickerTape() {
   const containerRef = useRef(null);
-  const textRef      = useRef(null);
+  const textRef = useRef(null);
 
   useGSAP(() => {
     // ── Mobile: skip GSAP pin — CSS marquee handles it ──
     if (window.matchMedia("(max-width: 768px)").matches) return;
 
-    const container  = containerRef.current;
-    const textTrack  = textRef.current;
+    const container = containerRef.current;
+    const textTrack = textRef.current;
     const getScrollAmount = () => -(textTrack.scrollWidth - window.innerWidth);
 
     const tween = gsap.to(textTrack, { x: getScrollAmount, ease: "none" });

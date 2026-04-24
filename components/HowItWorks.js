@@ -82,8 +82,8 @@ export default function HowItWorks() {
 
         {/* Section Header */}
         <div className="mb-6 md:mb-16 flex flex-col items-center text-center">
-          <div className="section-eyebrow">THE ARCHITECTURAL CYCLE</div>
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold font-syne text-white tracking-tight uppercase mt-2">
+          <div className="section-eyebrow" style={{ marginBottom: '0.9rem' }}>THE ARCHITECTURAL CYCLE</div>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold font-syne text-white tracking-tight uppercase mt-0">
             EMARK CYCLE
           </h2>
         </div>

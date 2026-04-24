@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef } from "react";
+import { forwardRef } from "react";
 import Image from "next/image";
 
 const cardData = [
@@ -50,15 +50,6 @@ const cardData = [
 
 const ServiceCard = forwardRef(({ index }, ref) => {
  const data = cardData[index];
- const videoRef = useRef(null);
-
- useEffect(() => {
-  if (videoRef.current) {
-   videoRef.current.play().catch(error => {
-    console.error("Video play failed:", error);
-   });
-  }
- }, []);
 
  return (
  <div
@@ -111,20 +102,17 @@ const ServiceCard = forwardRef(({ index }, ref) => {
  boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
  }}
  >
- <video
- ref={videoRef}
- src="/card-video.mp4"
- autoPlay
- muted
- loop
- playsInline
- style={{ 
- width: "100%", 
- height: "100%", 
- objectFit: "cover", 
- objectPosition: "center" 
- }}
- />
+ <img
+  src="/card_back.png"
+  alt="Card Back"
+  style={{ 
+  width: "100%", 
+  height: "100%", 
+  objectFit: "cover", 
+  objectPosition: "center",
+  display: "block"
+  }}
+  />
  </div>
 
  {/* ── BACK: white card with and with image as well service content ── */}

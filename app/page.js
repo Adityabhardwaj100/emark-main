@@ -18,13 +18,10 @@ export default function Home() {
 
  {/* ── All scrollable content sits below the hero ── */}
  <div className="relative z-10">
+ <TickerTape />
  <WebDev />
  <CompleteSystem />
- 
- <TickerTape />
  <HowItWorks />
-
-
 
  <CTA />
  </div>

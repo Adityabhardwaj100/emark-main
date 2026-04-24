@@ -10,8 +10,8 @@ import ServiceCard from "./ServiceCard";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function WebDev() {
-    const containerRef   = useRef(null);
-    const cardRefs       = useRef([]); // desktop
+    const containerRef = useRef(null);
+    const cardRefs = useRef([]); // desktop
     const mobileCardRefs = useRef([]); // mobile
 
     const lenisRef = useRef(null);
@@ -41,11 +41,11 @@ export default function WebDev() {
                 cards.forEach((card, i) => {
                     if (!card) return;
                     const front = card.querySelector(".flip-card-front");
-                    const back  = card.querySelector(".flip-card-back");
+                    const back = card.querySelector(".flip-card-back");
 
                     // Start: FRONT face visible (video side)
                     gsap.set(front, { rotateY: 0 });
-                    gsap.set(back,  { rotateY: 180 });
+                    gsap.set(back, { rotateY: 180 });
 
                     // Scrub = flip is tied directly to scroll position
                     // → scroll down: flips to back (text)
@@ -54,7 +54,7 @@ export default function WebDev() {
                         scrollTrigger: {
                             trigger: card,
                             start: "top 88%",      // flip starts as card enters viewport
-                            end:   "center 48%",   // flip completes when card center is near middle
+                            end: "center 48%",   // flip completes when card center is near middle
                             scrub: 1.2,
                             invalidateOnRefresh: true,
                         },
@@ -62,7 +62,7 @@ export default function WebDev() {
 
                     flipTl
                         .to(front, { rotateY: -180, ease: "power2.inOut", duration: 1 })
-                        .to(back,  { rotateY: 0,    ease: "power2.inOut", duration: 1 }, "<");
+                        .to(back, { rotateY: 0, ease: "power2.inOut", duration: 1 }, "<");
                 });
 
 
@@ -75,8 +75,8 @@ export default function WebDev() {
             const cards = cardRefs.current;
             const cardsSection = containerRef.current.querySelector(".webdev-cards-section");
             const totalScrollHeight = window.innerHeight * 3;
-            const positions  = [14, 38, 62, 86];
-            const rotations  = [-18, -7, 7, 18];
+            const positions = [14, 38, 62, 86];
+            const rotations = [-18, -7, 7, 18];
 
             ScrollTrigger.create({
                 trigger: cardsSection,
@@ -88,9 +88,9 @@ export default function WebDev() {
 
             cards.forEach((card, i) => {
                 const frontEl = card.querySelector(".flip-card-front");
-                const backEl  = card.querySelector(".flip-card-back");
-                gsap.set(backEl,  { rotateY: 180 });
-                gsap.set(frontEl, { rotateY: 0   });
+                const backEl = card.querySelector(".flip-card-back");
+                gsap.set(backEl, { rotateY: 180 });
+                gsap.set(frontEl, { rotateY: 0 });
 
                 const tl = gsap.timeline({
                     scrollTrigger: {
@@ -112,8 +112,8 @@ export default function WebDev() {
                 // Phase 2: flip + straighten
                 const flipStart = 1 + i * 0.25;
                 tl.to(frontEl, { rotateY: -180, ease: "power3.inOut", duration: 1.2 }, flipStart);
-                tl.to(backEl,  { rotateY: 0,    ease: "power3.inOut", duration: 1.2 }, flipStart);
-                tl.to(card,    { rotation: 0,   ease: "power3.inOut", duration: 1.2 }, flipStart);
+                tl.to(backEl, { rotateY: 0, ease: "power3.inOut", duration: 1.2 }, flipStart);
+                tl.to(card, { rotation: 0, ease: "power3.inOut", duration: 1.2 }, flipStart);
             });
         },
         { scope: containerRef }
@@ -188,7 +188,7 @@ export default function WebDev() {
                     <div className="flex flex-col items-center text-center">
                         <div className="section-eyebrow">WHAT WE DO</div>
                         <h2 className="text-5xl lg:text-6xl font-bold font-syne text-white mb-2 md:mb-4 leading-tight max-w-3xl uppercase tracking-tight">
-                            WE DON&apos;T JUST CONSULT. WE BUILD.
+                            WE DON&apos;T JUST CONSULT WE BUILD
                         </h2>
                     </div>
                 </motion.div>

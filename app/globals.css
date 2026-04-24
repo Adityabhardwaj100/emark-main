@@ -93,6 +93,13 @@
   animation: marquee 30s linear infinite;
 }
 
+/* Mobile: faster marquee speed */
+@media (max-width: 768px) {
+  .animate-marquee-slow {
+    animation-duration: 35s;
+  }
+}
+
 /* ─── ORB AMBIENTS ───────────────────────────────────────── */
 .orb-1 {
   position: absolute;
