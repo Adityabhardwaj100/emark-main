@@ -39,7 +39,7 @@ const PROJECTS = [
     display: "grytt.in",
     tech: "Shopify",
     index: "02",
-    image: "/projects/grytt.png",
+    image: "/projects/gryttt.png",
     tagline: "Premium Shopify Storefront",
     description:
       "A premium Shopify storefront crafted for high-conversion sales. Built with a mobile-first design philosophy and optimised for maximum product discovery and checkout conversion.",
@@ -59,6 +59,7 @@ const PROJECTS = [
     display: "briajewels.com",
     tech: "Shopify",
     index: "03",
+    image: "/projects/bria.png",
     tagline: "Luxury Jewellery E-Commerce",
     description:
       "An elegant jewellery brand store combining a luxurious visual identity with optimised product pages. Every detail — from typography to product zoom — crafted to reflect the brand's premium positioning.",
@@ -78,6 +79,7 @@ const PROJECTS = [
     display: "clearecho.vercel.app",
     tech: "Next.js",
     index: "04",
+    image: "/projects/clear.png",
     tagline: "SaaS Brand Website",
     description:
       "A high-end SaaS brand website with a brutalist-inspired design language and cinematic scroll animations. Built to position ClearEcho as an authoritative player in the AI-communications space.",
@@ -97,6 +99,7 @@ const PROJECTS = [
     display: "nautilusverse.com",
     tech: "Next.js",
     index: "05",
+    image: "/projects/nautilus.png",
     tagline: "Immersive Web Experience",
     description:
       "An immersive Next.js experience with WebGL-driven visuals and premium interactive storytelling. Built to blur the boundary between website and digital art installation.",
@@ -116,6 +119,7 @@ const PROJECTS = [
     display: "clever-cabling.ca",
     tech: "Shopify",
     index: "06",
+    image: "/projects/cabling.png",
     tagline: "B2B Electrical Solutions",
     description:
       "A professional B2B Shopify store for a Canadian electrical solutions provider. Designed for trust, clarity and bulk-order efficiency — balancing industrial aesthetics with intuitive navigation.",
@@ -135,6 +139,7 @@ const PROJECTS = [
     display: "hebbevu.com",
     tech: "Shopify",
     index: "07",
+    image: "/projects/hebbeu.png",
     tagline: "Lifestyle Brand Storefront",
     description:
       "A clean, conversion-focused Shopify storefront for a lifestyle brand. Designed with minimal aesthetics and smart layout decisions to push product discovery and reduce drop-off.",
@@ -154,6 +159,7 @@ const PROJECTS = [
     display: "sixstartravel.ca",
     tech: "Shopify",
     index: "08",
+    image: "/projects/six.png",
     tagline: "Luxury Travel Agency",
     description:
       "A luxury travel agency storefront engineered for high-value bookings and premium customer experience. Every touchpoint designed to reflect an aspirational, world-class travel brand.",
@@ -173,6 +179,7 @@ const PROJECTS = [
     display: "monabindia.com",
     tech: "Shopify",
     index: "09",
+    image: "/projects/monab.png",
     tagline: "Fashion Brand E-Commerce",
     description:
       "A fashion-forward Shopify store with editorial photography and smooth product discovery. Built to amplify brand storytelling while driving direct-to-consumer sales.",
@@ -192,6 +199,7 @@ const PROJECTS = [
     display: "rekhasharma.in",
     tech: "Next.js",
     index: "10",
+    image: "/projects/rekha.png",
     tagline: "Personal Brand Website",
     description:
       "A fast, elegant personal brand website built in Next.js. SEO-optimised from the ground up and designed to establish authority and drive inbound enquiries.",
@@ -211,6 +219,7 @@ const PROJECTS = [
     display: "skincare-eta-pink.vercel.app",
     tech: "Next.js",
     index: "11",
+    image: "/projects/skin.png",
     tagline: "Skincare Brand Landing Page",
     description:
       "A beautiful skincare brand landing page with soft, premium aesthetics and animated product sections. Designed to build brand trust and drive product exploration.",
