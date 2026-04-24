@@ -269,19 +269,9 @@ function ProjectModal({ project, onClose }) {
           <X size={16} className="text-white" />
         </button>
 
-        {/* Screenshot — compact height so content starts near top */}
-        <div className="w-full relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-          <img
-            src={getThumb(project.url)}
-            alt={project.title}
-            className="w-full h-full object-cover object-top"
-            onError={(e) => { e.target.parentElement.style.background = "#111"; e.target.style.display = "none"; }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent" />
-        </div>
+        {/* Content — starts from top, right below close button */}
+        <div className="px-6 md:px-8 pt-16 pb-16 relative">
 
-        {/* Content — starts right after screenshot */}
-        <div className="px-6 md:px-8 pt-6 pb-16 relative">
           {/* Index + tech */}
           <div className="flex items-center gap-4 mb-6">
             <span className="text-[11px] font-mono text-white/20 uppercase tracking-widest">{project.index} / 11</span>
@@ -292,30 +282,40 @@ function ProjectModal({ project, onClose }) {
             </span>
           </div>
 
-          <h2 className="font-syne text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-2">
+          <h2 className="font-syne text-3xl md:text-4xl font-black uppercase tracking-tighter text-white mb-1">
             {project.title}
           </h2>
-          <p className="text-gray-500 text-sm uppercase tracking-widest mb-8 font-medium">{project.tagline}</p>
+          <p className="text-gray-500 text-sm uppercase tracking-widest mb-6 font-medium">{project.tagline}</p>
 
-          <p className="text-gray-400 text-base leading-relaxed mb-10">{project.description}</p>
+          {/* Inline screenshot thumbnail */}
+          <div className="w-full rounded-2xl overflow-hidden border border-white/[0.07] mb-8" style={{ aspectRatio: "16/9" }}>
+            <img
+              src={getThumb(project.url)}
+              alt={project.title}
+              className="w-full h-full object-cover object-top"
+              onError={(e) => { e.target.parentElement.style.background = "#111"; e.target.style.display = "none"; }}
+            />
+          </div>
+
+          <p className="text-gray-400 text-sm leading-relaxed mb-8">{project.description}</p>
 
           {/* Metrics */}
-          <div className="grid grid-cols-3 gap-3 mb-10">
+          <div className="grid grid-cols-3 gap-3 mb-8">
             {project.metrics.map((m) => (
               <div key={m.label} className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-4">
-                <div className="font-syne font-bold text-white text-lg">{m.val}</div>
+                <div className="font-syne font-bold text-white text-base">{m.val}</div>
                 <div className="text-[10px] uppercase tracking-widest text-gray-600 mt-1 font-medium">{m.label}</div>
               </div>
             ))}
           </div>
 
           {/* Work done */}
-          <div className="mb-10">
-            <div className="section-eyebrow mb-5" style={{ marginBottom: "1.2rem" }}>WHAT WE DID</div>
-            <ul className="flex flex-col gap-3">
+          <div className="mb-8">
+            <div className="section-eyebrow" style={{ marginBottom: "1rem" }}>WHAT WE DID</div>
+            <ul className="flex flex-col">
               {project.work.map((item, i) => (
-                <li key={i} className="flex items-start gap-4 py-4 border-b border-white/[0.05]">
-                  <span className="text-[10px] font-mono text-white/20 mt-1 shrink-0">0{i + 1}</span>
+                <li key={i} className="flex items-start gap-4 py-3.5 border-b border-white/[0.05]">
+                  <span className="text-[10px] font-mono text-white/20 mt-0.5 shrink-0">0{i + 1}</span>
                   <span className="text-gray-300 text-sm leading-relaxed">{item}</span>
                 </li>
               ))}
