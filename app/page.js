@@ -5,6 +5,7 @@ import HowItWorks from "@/components/HowItWorks";
 import CTA from "@/components/CTA";
 import TickerTape from "@/components/TickerTape";
 import CompleteSystem from "@/components/CompleteSystem";
+import Tools from "@/components/Tools";
 import { Bot } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -22,6 +23,7 @@ export default function Home() {
  <WebDev />
  <CompleteSystem />
  <HowItWorks />
+ <Tools />
 
  <CTA />
  </div>
