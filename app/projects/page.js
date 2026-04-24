@@ -372,9 +372,9 @@ export default function ProjectsPage() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] pointer-events-none"
             style={{ background: "radial-gradient(ellipse, rgba(200,241,53,0.05) 0%, transparent 65%)" }} />
 
-          <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 relative z-10">
+          <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 relative z-10 flex flex-col items-center text-center">
             <div className="proj-hero-eyebrow">
-              <div className="section-eyebrow mb-6">OUR WORK</div>
+              <div className="section-eyebrow justify-center mb-6">OUR WORK</div>
             </div>
 
             <h1 className="font-syne font-black uppercase tracking-tighter leading-[0.85] text-white text-[clamp(3.5rem,10vw,9rem)] mb-10">
@@ -386,14 +386,14 @@ export default function ProjectsPage() {
               </div>
             </h1>
 
-            <div className="proj-stats flex flex-wrap gap-12 pt-10 border-t border-white/[0.06]">
+            <div className="proj-stats flex flex-wrap justify-center gap-10 md:gap-16 pt-10 border-t border-white/[0.06] w-full">
               {[
                 { num: `${PROJECTS.length}+`, label: "Projects Delivered" },
                 { num: "2",    label: "Tech Stacks" },
                 { num: "4",    label: "Countries" },
                 { num: "100%", label: "Client Retention" },
               ].map((s) => (
-                <div key={s.label} className="proj-stat">
+                <div key={s.label} className="proj-stat text-center">
                   <div className="font-syne font-black text-white text-4xl md:text-5xl tracking-tighter">{s.num}</div>
                   <div className="text-[10px] uppercase tracking-widest text-gray-600 mt-2 font-bold">{s.label}</div>
                 </div>
