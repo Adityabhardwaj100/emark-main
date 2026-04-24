@@ -127,7 +127,7 @@ export default function Tools() {
           Tools We Work With
         </h2>
         <p className="text-gray-500 text-sm md:text-base mt-3 max-w-md mx-auto leading-relaxed">
-          Powered by the industry's most trusted platforms — built for speed, scale, and results.
+          Powered by the industry&apos;s most trusted platforms — built for speed, scale, and results.
         </p>
       </div>
 
