@@ -19,6 +19,7 @@ const PROJECTS = [
     display: "justbecho.com",
     tech: "Next.js",
     index: "01",
+    image: "/projects/justbecho.jpg",
     tagline: "Custom E-Commerce Platform",
     description:
       "A fully custom-built e-commerce platform developed in Next.js from the ground up. Designed for blazing-fast performance, seamless UX, and scalable architecture that grows with the business.",
@@ -228,8 +229,9 @@ const TECH_CONFIG = {
   "Shopify":  { color: "#95bf47", bg: "rgba(149,191,71,0.1)"  },
 };
 
-function getThumb(url) {
-  return `https://image.thum.io/get/width/1200/crop/630/noanimate/${url}`;
+function getThumb(project) {
+  if (project.image) return project.image;
+  return `https://image.thum.io/get/width/1200/crop/630/noanimate/${project.url}`;
 }
 
 // ── Project Detail Modal ──────────────────────────────────────────
@@ -290,7 +292,7 @@ function ProjectModal({ project, onClose }) {
           {/* Inline screenshot thumbnail */}
           <div className="w-full rounded-2xl overflow-hidden border border-white/[0.07] mb-8" style={{ aspectRatio: "16/9" }}>
             <img
-              src={getThumb(project.url)}
+              src={getThumb(project)}
               alt={project.title}
               className="w-full h-full object-cover object-top"
               onError={(e) => { e.target.parentElement.style.background = "#111"; e.target.style.display = "none"; }}
@@ -457,7 +459,7 @@ export default function ProjectsPage() {
                   <div className="md:hidden flex items-center gap-4 py-5 border-b border-white/[0.06] hover:border-white/20 transition-colors">
                     <div className="w-14 h-9 rounded-lg overflow-hidden shrink-0 border border-white/[0.07]">
                       <img
-                        src={getThumb(project.url)}
+                        src={getThumb(project)}
                         alt={project.title}
                         className="w-full h-full object-cover object-top"
                         onError={(e) => { e.target.parentElement.style.background = "#111"; e.target.style.display = "none"; }}
@@ -489,7 +491,7 @@ export default function ProjectsPage() {
                     <div className="col-span-4 flex items-center gap-5 relative z-10">
                       <div className="w-20 h-12 rounded-lg overflow-hidden shrink-0 border border-white/[0.07] group-hover:border-white/20 transition-colors">
                         <img
-                          src={getThumb(project.url)}
+                          src={getThumb(project)}
                           alt={project.title}
                           className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                           onError={(e) => { e.target.parentElement.style.background = "#111"; e.target.style.display = "none"; }}
