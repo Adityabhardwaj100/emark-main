@@ -183,11 +183,11 @@ export default function WebDev() {
                     whileInView={{ y: 0, opacity: 1 }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     viewport={{ once: false, amount: 0.1 }}
-                    style={{ position: "absolute", top: "18vh", left: 0, right: 0, padding: "0 20px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", zIndex: 5 }}
+                    style={{ position: "absolute", top: "14vh", left: 0, right: 0, padding: "0 20px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", zIndex: 5 }}
                 >
                     <div className="flex flex-col items-center text-center">
                         <div className="section-eyebrow">WHAT WE DO</div>
-                        <h2 className="text-5xl lg:text-6xl font-bold font-syne text-white mb-2 md:mb-4 leading-tight max-w-3xl uppercase tracking-tight">
+                        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold font-syne text-white mb-2 md:mb-4 leading-tight max-w-3xl uppercase tracking-tight">
                             WE DON&apos;T JUST CONSULT WE BUILD
                         </h2>
                     </div>

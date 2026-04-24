@@ -81,15 +81,15 @@ export default function HowItWorks() {
       <div className="max-w-[1200px] w-full mx-auto px-4 md:px-6 lg:px-12 relative flex flex-col items-center">
 
         {/* Section Header */}
-        <div className="mb-6 md:mb-16 flex flex-col items-center text-center">
+        <div className="mb-4 md:mb-8 lg:mb-10 flex flex-col items-center text-center">
           <div className="section-eyebrow" style={{ marginBottom: '0.9rem' }}>THE ARCHITECTURAL CYCLE</div>
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold font-syne text-white tracking-tight uppercase mt-0">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-syne text-white tracking-tight uppercase mt-0">
             EMARK CYCLE
           </h2>
         </div>
 
-        {/* Stacking Cards — same on all screen sizes */}
-        <div className="relative w-full h-[58vh] md:h-[60vh] max-h-[600px]">
+        {/* Stacking Cards — height responsive for MacBook Air */}
+        <div className="relative w-full h-[52vh] md:h-[55vh] lg:h-[58vh] max-h-[480px] lg:max-h-[540px]">
           {STEPS.map((step, idx) => (
             <div
               key={step.num}

@@ -36,11 +36,11 @@ export default function Hero() {
  >
  <TextReveal
  text="ONE UNIFIED"
- className="text-5xl sm:text-7xl md:text-[7rem] lg:text-[9rem] font-bold font-syne leading-[0.85] tracking-tighter text-white justify-center w-full text-center"
+ className="text-5xl sm:text-7xl md:text-[6rem] lg:text-[7rem] xl:text-[9rem] font-bold font-syne leading-[0.85] tracking-tighter text-white justify-center w-full text-center"
  />
  <TextReveal
  text="GROWTH ENGINE"
- className="text-5xl sm:text-7xl md:text-[7rem] lg:text-[9rem] font-bold font-syne leading-[0.85] tracking-tighter text-white justify-center w-full text-center"
+ className="text-5xl sm:text-7xl md:text-[6rem] lg:text-[7rem] xl:text-[9rem] font-bold font-syne leading-[0.85] tracking-tighter text-white justify-center w-full text-center"
  />
  </motion.div>
 
