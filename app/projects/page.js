@@ -19,7 +19,7 @@ const PROJECTS = [
     display: "justbecho.com",
     tech: "Next.js",
     index: "01",
-    image: "/projects/justbecho.jpg",
+    image: "/projects/justbecho.png",
     tagline: "Custom E-Commerce Platform",
     description:
       "A fully custom-built e-commerce platform developed in Next.js from the ground up. Designed for blazing-fast performance, seamless UX, and scalable architecture that grows with the business.",
@@ -39,7 +39,7 @@ const PROJECTS = [
     display: "grytt.in",
     tech: "Shopify",
     index: "02",
-    image: "/projects/grytt.jpg",
+    image: "/projects/grytt.png",
     tagline: "Premium Shopify Storefront",
     description:
       "A premium Shopify storefront crafted for high-conversion sales. Built with a mobile-first design philosophy and optimised for maximum product discovery and checkout conversion.",
@@ -227,7 +227,7 @@ const PROJECTS = [
 
 const TECH_CONFIG = {
   "Next.js": { color: "#ffffff", bg: "rgba(255,255,255,0.07)" },
-  "Shopify":  { color: "#95bf47", bg: "rgba(149,191,71,0.1)"  },
+  "Shopify": { color: "#95bf47", bg: "rgba(149,191,71,0.1)" },
 };
 
 function getThumb(project) {
@@ -392,8 +392,8 @@ export default function ProjectsPage() {
             <div className="proj-stats flex flex-wrap justify-center gap-10 md:gap-16 pt-10 border-t border-white/[0.06] w-full">
               {[
                 { num: `${PROJECTS.length}+`, label: "Projects Delivered" },
-                { num: "2",    label: "Tech Stacks" },
-                { num: "4",    label: "Countries" },
+                { num: "2", label: "Tech Stacks" },
+                { num: "4", label: "Countries" },
                 { num: "100%", label: "Client Retention" },
               ].map((s) => (
                 <div key={s.label} className="proj-stat text-center">
@@ -419,8 +419,8 @@ export default function ProjectsPage() {
                   className="px-5 py-2 rounded-full text-[11px] uppercase tracking-widest font-black transition-all duration-300"
                   style={{
                     background: isActive ? "#c8f135" : "transparent",
-                    color:      isActive ? "#000"    : "rgba(255,255,255,0.3)",
-                    border:     isActive ? "1px solid transparent" : "1px solid rgba(255,255,255,0.08)",
+                    color: isActive ? "#000" : "rgba(255,255,255,0.3)",
+                    border: isActive ? "1px solid transparent" : "1px solid rgba(255,255,255,0.08)",
                   }}
                 >
                   {f} <span className="opacity-50 ml-1">{count}</span>
