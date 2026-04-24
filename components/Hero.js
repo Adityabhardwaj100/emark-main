@@ -32,7 +32,7 @@ export default function Hero() {
  {/* Text — pointer-events-none so cursor passes through to Spline */}
  <motion.div
  style={{ opacity, scale }}
- className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-20 mt-auto pb-20 md:pb-24 pointer-events-none flex flex-col items-center text-center"
+ className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-20 my-auto py-20 md:py-24 pointer-events-none flex flex-col items-center text-center"
  >
  <TextReveal
  text="ONE UNIFIED"
