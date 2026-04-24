@@ -32,23 +32,23 @@ export default function CTA() {
                     className="flex flex-col sm:flex-row items-center justify-center gap-4"
                 >
                     <MagneticButton
-                        href="https://wa.me/"
-                        target="_blank"
+                        href="/contact"
                         className="w-full sm:w-auto bg-lime text-black px-10 py-4 rounded-full text-sm font-black uppercase tracking-wider hover:bg-white transition-all shadow-[0_0_40px_rgba(200,241,53,0.2)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)]"
                     >
                         <span className="flex items-center justify-center gap-3 pointer-events-none">
-
                             Build My Project
                         </span>
                     </MagneticButton>
 
-                    <a
-                        href="#process"
+                    <MagneticButton
+                        href="/about"
                         className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors uppercase text-sm font-bold tracking-wider group border border-white/10 hover:border-white/20 px-8 py-4 rounded-full"
                     >
-                        See Our Process
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                    </a>
+                        <span className="flex items-center gap-2 pointer-events-none">
+                            See Our Process
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </span>
+                    </MagneticButton>
                 </motion.div>
             </div>
         </section>
