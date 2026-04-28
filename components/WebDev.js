@@ -53,8 +53,8 @@ export default function WebDev() {
                     const flipTl = gsap.timeline({
                         scrollTrigger: {
                             trigger: card,
-                            start: "top 88%",      // flip starts as card enters viewport
-                            end: "center 48%",   // flip completes when card center is near middle
+                            start: "top 60%",      // delayed flip: starts when card is much higher up
+                            end: "bottom 45%",   // flip completes later
                             scrub: 1.2,
                             invalidateOnRefresh: true,
                         },
@@ -109,8 +109,8 @@ export default function WebDev() {
                     duration: 1,
                 }, 0);
 
-                // Phase 2: flip + straighten
-                const flipStart = 1 + i * 0.25;
+                // Phase 2: flip + straighten (delayed by 1 "second" in scrub to show logos longer)
+                const flipStart = 2.0 + i * 0.25;
                 tl.to(frontEl, { rotateY: -180, ease: "power3.inOut", duration: 1.2 }, flipStart);
                 tl.to(backEl, { rotateY: 0, ease: "power3.inOut", duration: 1.2 }, flipStart);
                 tl.to(card, { rotation: 0, ease: "power3.inOut", duration: 1.2 }, flipStart);
