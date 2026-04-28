@@ -27,11 +27,13 @@ export default function TubesBackground({
         if (!mounted) return;
 
         const app = TubesCursor(canvasRef.current, {
+          sleepTimeScale: 2.5, // Speeds up the infinity loop
           tubes: {
-            colors: ["#c8f135", "#ffffff", "#444444"], // Customizing to Emark brand: Lime, White, Dark Grey
+            length: 120, // Makes the tail left behind longer
+            colors: ["#ff1493", "#8a2be2", "#1a001a"], // Deep red/magenta and purple
             lights: {
-              intensity: 300,
-              colors: ["#c8f135", "#ffffff", "#333333", "#000000"]
+              intensity: 250,
+              colors: ["#ff0055", "#9400d3", "#220022", "#000000"]
             }
           }
         });

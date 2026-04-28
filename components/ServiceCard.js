@@ -100,19 +100,21 @@ const ServiceCard = forwardRef(({ index }, ref) => {
  borderRadius: "1.4rem",
  overflow: "hidden",
  boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
+ backgroundColor: "#000",
+ border: "1px solid rgba(255,255,255,0.05)",
  }}
  >
- <img
-  src="/card_back.png"
-  alt="Card Back"
+  <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", zIndex: 50 }}>
+  <img 
+  src="/emark_logo.png" 
+  alt="Emark Logo" 
+  className="animate-[spin_4s_linear_infinite]" 
   style={{ 
-  width: "100%", 
-  height: "100%", 
-  objectFit: "cover", 
-  objectPosition: "center",
-  display: "block"
-  }}
+  width: "120px", 
+  height: "120px"
+  }} 
   />
+  </div>
  </div>
 
  {/* ── BACK: white card with and with image as well service content ── */}
@@ -173,7 +175,7 @@ const ServiceCard = forwardRef(({ index }, ref) => {
  >
  {data.label}
  </span>
- <span style={{ fontSize: "22px" }}>{data.emoji}</span>
+
  </div>
 
  {/* Items list */}

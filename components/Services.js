@@ -54,7 +54,7 @@ export default function Services() {
  className="group bg-black border border-white/5 p-7 md:p-10 rounded-3xl hover:border-lime/30 transition-all duration-500 hover:-translate-y-2"
  >
  <div className="mb-6 w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-lime/10 transition-colors">
- <Icon className="text-white group-hover:text-white transition-colors" size={24} />
+ <img src="/emark_logo.png" alt="Emark Logo" className="w-7 h-7 text-white group-hover:text-white transition-colors animate-[spin_4s_linear_infinite]" style={{ mixBlendMode: 'screen' }} />
  </div>
  <h3 className="text-xl font-bold font-syne text-white mb-3">{srv.title}</h3>
  <p className="text-gray-400 mb-6 leading-relaxed">{srv.description}</p>
