@@ -10,22 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 // Ticker items — shown on both mobile (marquee) and desktop (scroll)
 const ITEMS = [
   { type: "text", content: "WE BUILD AI" },
-  { type: "icon", icon: ArrowRight },
+  { type: "icon", icon: Bot },
   { type: "text", content: "THAT WORKS", italic: true },
   { type: "dot", lime: true },
-  { type: "text", content: "NOT JUST WEBSITES" },
+  { type: "text", content: "AS A FULL-STACK" },
   { type: "line" },
-  { type: "text", content: "FULL STACK GROWTH" },
-  { type: "icon", icon: Bot },
-
-  { type: "dot", lime: true },
-  { type: "text", content: "SCALE WITHOUT LIMITS" },
-  { type: "icon", icon: Globe },
-  { type: "text", content: "THIS IS EMARK" },
+  { type: "text", content: "GROWTH ENGINE", italic: true },
   { type: "icon", icon: TrendingUp, lime: true },
-  { type: "text", content: "YOUR GROWTH ENGINE", italic: true },
   { type: "dot", lime: true },
-  { type: "text", content: "EMARK" },
+  { type: "text", content: "THIS IS EMARK" },
   { type: "dot", lime: true, small: true },
 ];
 
